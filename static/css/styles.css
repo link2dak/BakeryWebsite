@@ -1,0 +1,161 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.page-header{
+    position: sticky;
+    display: flex;
+    background-color: rgb(141, 122, 163);
+    width: 100%;
+    box-shadow: 0 3px 35px rgba(45, 1, 71, 0.418);
+    flex-direction: column;
+    padding:.4rem;
+
+
+
+}
+.page-header .main-products-links-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-products-links-container .main-products-links{
+    display: flex;
+    flex-direction: row;
+    gap: 10rem; /* space between each item */
+
+}
+.main-products-links p {
+  position: relative;
+  cursor: pointer;
+  font-size: 1.5rem
+}
+
+.main-products-links p::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: black;
+  /* transition: width 0.3s ease; */
+}
+
+.main-products-links p:hover::after {
+  width: 100%;
+}
+
+.page-header .header-container{
+    display: flex;
+    padding: 0;
+    flex-direction: row; /* Stacks items vertically */
+    align-items: center;
+    justify-content: center;
+    gap: 20rem
+}
+
+.header-container .bakery-pic-button{
+    background: none;
+    border: 2px solid #ccc;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 50%; /* Makes the button round */
+    overflow: hidden;   /* Ensures image stays within circle */
+    width: 100px;
+    height: 100px;
+    transition: border-color 0.3s ease;
+}
+.bakery-pic{
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Prevents image stretching */
+    }
+
+.header-container .header-message-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-container .cart-search{
+    display:flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.header-message{
+    font-family: "Dancing Script";
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.cart-icon svg {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.search-icon svg {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.exit-icon svg{
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    transition: 0.2s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.cart-icon svg:hover {
+  transform: scale(1.1);
+}
+.search-icon svg:hover {
+  transform: scale(1.1);
+}
+
+
+.cart-collapsable-container{
+    display: flex;
+    justify-content: right;
+    background-color: aliceblue;
+}
+.cart-collapsable-content{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    width: 350px;
+    height: 100vh;      /* full screen height */
+    background: white;  /* the solid white box */
+    z-index: 1000;
+    box-shadow: -4px 0 15px rgba(0,0,0,0.2);
+    gap: 10rem;
+}
+
+.middle-cart-collapsable-content p{
+    text-align: center;
+    font-size: 1.5rem
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0; /* same as top:0; left:0; width:100%; height:100% */
+
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+
+    opacity: 10;
+}
+
+/* when active */
+.overlay.active {
+  display: block;
+  pointer-events: auto;
+}
