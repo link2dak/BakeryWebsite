@@ -30,21 +30,21 @@ exit_button.addEventListener("click", closePanel);
 
 
 const shop_bakery_menu = document.querySelector(".shop-bakery-container");
-const down_arrow_icon = document.getElementById("down-arrow-icon");
-const up_arrow_icon = document.getElementById("up-arrow-icon")
+const arrow_icons = document.querySelectorAll(".arrow-icon")
 const shop_bakery_content = document.getElementById("shop-bakery-content")
 
 shop_bakery_menu.addEventListener("mouseenter", function() {
-    console.log("there is a hover in action");
-    down_arrow_icon.classList.add("active")
-    up_arrow_icon.classList.add("active")
+
+    arrow_icons.forEach(icon => {
+        icon.classList.toggle("active")       
+    });
     shop_bakery_content.classList.add("active")
 
 });
 
 shop_bakery_menu.addEventListener("mouseleave", function(){
-    console.log("the mouse has left");
-    up_arrow_icon.classList.remove("active")
-    down_arrow_icon.classList.remove("active")
+    arrow_icons.forEach(icon => {
+        icon.classList.toggle("active")       
+    });
     shop_bakery_content.classList.remove("active")
 });

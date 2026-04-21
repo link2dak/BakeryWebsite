@@ -103,20 +103,11 @@ body {
   cursor: pointer;
   transition: 0.2s;
 }
-.down-arrow-icon svg{
-  width: 28px;
-  height: 28px;
+.arrow-icon svg{
+  width: 24px;
+  height: 24px;
   cursor: pointer;
-  transition: 0.2s;
-  padding-top: 1.6rem 
-}
-
-.up-arrow-icon svg{
-  width: 28px;
-  height: 28px;
-  cursor: pointer;
-  transition: 0.2s;
-  padding-top: 1.6rem 
+  padding-top: 1.8rem 
 }
 
 .exit-icon svg{
@@ -202,19 +193,11 @@ body {
     flex-direction: row;
 }
 
-.up-arrow-icon{
-    display: none;
-}
-.down-arrow-icon{
-    display: block;
-}
-
-.down-arrow-icon.active{
+.arrow-icon{
     display: none;
 }
 
-.up-arrow-icon.active{
-    opacity: 1;
+.arrow-icon.active{
     display: block;
 }
 
