@@ -26,13 +26,13 @@ body {
     gap: 10rem; /* space between each item */
 
 }
-.main-products-links p {
+.main-products-links .header-buttons p{
   position: relative;
   cursor: pointer;
   font-size: 1.5rem
 }
 
-.main-products-links p::after {
+.main-products-links .header-buttons p::after {
   content: "";
   position: absolute;
   left: 0;
@@ -40,10 +40,10 @@ body {
   width: 0;
   height: 2px;
   background: black;
-  /* transition: width 0.3s ease; */
+  transition: width 0.3s ease;
 }
 
-.main-products-links p:hover::after {
+.main-products-links .header-buttons p:hover::after {
   width: 100%;
 }
 
@@ -103,6 +103,22 @@ body {
   cursor: pointer;
   transition: 0.2s;
 }
+.down-arrow-icon svg{
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  transition: 0.2s;
+  padding-top: 1.6rem 
+}
+
+.up-arrow-icon svg{
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  transition: 0.2s;
+  padding-top: 1.6rem 
+}
+
 .exit-icon svg{
     width: 28px;
     height: 28px;
@@ -116,46 +132,133 @@ body {
 .cart-icon svg:hover {
   transform: scale(1.1);
 }
+
 .search-icon svg:hover {
   transform: scale(1.1);
 }
 
 
-.cart-collapsable-container{
-    display: flex;
-    justify-content: right;
-    background-color: aliceblue;
+/* Container (can stay simple) */
+.cart-collapsable-container {
+    position: relative;
 }
-.cart-collapsable-content{
-    display: none;
+.cart-collapsable-content {
+    display: flex;
     flex-direction: column;
-    position: absolute;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+
     width: 350px;
-    height: 100vh;      /* full screen height */
-    background: white;  /* the solid white box */
+    height: 100vh;
+    background: white;
+
     z-index: 1000;
     box-shadow: -4px 0 15px rgba(0,0,0,0.2);
+
     gap: 10rem;
+    padding: 1rem;
+
+    /* 👇 hidden state */
+    transform: translateX(100%);
+    transition: transform 0.2s ease-in-out;
 }
 
-.middle-cart-collapsable-content p{
+/* 👇 visible state */
+.cart-collapsable-content.open {
+    transform: translateX(0%);
+}
+
+/* === TEXT === */
+.middle-cart-collapsable-content p {
     text-align: center;
-    font-size: 1.5rem
+    font-size: 1.5rem;
 }
 
+/* === OVERLAY === */
 .overlay {
-    display: none;
     position: fixed;
-    inset: 0; /* same as top:0; left:0; width:100%; height:100% */
+    inset: 0; /* full screen */
 
     background: rgba(0, 0, 0, 0.5);
-    z-index: 10;
+    z-index: 999;
 
-    opacity: 10;
+    /* 👇 hidden state */
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.3s ease;
 }
 
-/* when active */
+/* 👇 visible state */
 .overlay.active {
-  display: block;
-  pointer-events: auto;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.shop-bakery-message{
+    display: flex;
+    flex-direction: row;
+}
+
+.up-arrow-icon{
+    display: none;
+}
+.down-arrow-icon{
+    display: block;
+}
+
+.down-arrow-icon.active{
+    display: none;
+}
+
+.up-arrow-icon.active{
+    opacity: 1;
+    display: block;
+}
+
+
+.shop-bakery-container{
+    display:block;
+    position: relative;
+    align-items: center;
+}
+.shop-bakery-content-container{
+    top: 100%;
+}
+.shop-bakery-content{
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    position: absolute;
+    width: 20rem;
+    
+    /* makes it have cureved edges*/
+    border-radius: 15px;
+
+    background: white;
+    box-shadow: -4px 0 15px rgba(0,0,0,0.2);
+
+    height:0;
+
+    opacity: 0;
+    transform: translateY(-10px);
+
+    
+    transition: 
+        transform 0.2s ease;
+}
+.shop-bakery-content p{
+    padding-left: 2rem;
+    font-size: large;
+}
+.shop-bakery-content p:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.shop-bakery-content.active{
+    height: 30rem;
+    opacity: 1;
+    transform: translateY(0);
 }

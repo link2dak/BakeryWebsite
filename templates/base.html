@@ -24,7 +24,7 @@
                     {% if cart %}
                         <p> There is something in the cart</p>    
                     {% else %}   
-                        <p>There is nothing in the cart</p>
+                        <p>There is nothing in your cart</p>
                     {% endif %}
                 </div>    
         </div>
@@ -41,9 +41,36 @@
             <button class="bakery-pic-button" data-url="{{ url_for('home') }}"><img src="static\images\bakery.png" alt="Pic" class="bakery-pic"></button>
             <div class="main-products-links-container">
                 <div class="main-products-links">
-                    <p>Shop Bakery</p>
-                    <p>About Us</p>
-                    <p>Contact</p>
+                    <div class="shop-bakery-container">
+                        <div class="shop-bakery-message">
+                            <div class="header-buttons">
+                                <p>Shop Bakery</p>
+                            </div>
+                            <div class="down-arrow-icon", id="down-arrow-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                </svg>
+                            </div>
+                            <div class="up-arrow-icon" id="up-arrow-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="shop-bakery-content-container">
+                            <div class="shop-bakery-content" id="shop-bakery-content">
+                                <p> Breads </p>
+                                <p> Sweet Treats </p>
+                            </div>                          
+                        </div>
+                    </div>
+                    <div class="header-buttons">
+                         <p>About Us</p>
+                    </div>
+                    <div class="header-buttons">
+                        <p>Contact</p>
+                    </div>
                 </div>
             </div>
             <div class="cart-search">
