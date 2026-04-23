@@ -10,145 +10,148 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-
-    <div class="container">
-        <div class="overlay" id="overlay"></div>
-        <div class="cart-collapsable-container">
-            <div class="cart-collapsable-content">
-                <div class="exit-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6" id="exit-button">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                    </svg>
-                </div>
-                <div class="middle-cart-collapsable-content">
-                    {% if cart %}
-                        <p> There is something in the cart</p>    
-                    {% else %}   
-                        <p>There is nothing in your cart</p>
-                    {% endif %}
-                </div>    
+    <div class="whole-page">
+        <div class="cart-container">
+            <div class="overlay" id="overlay"></div>
+            <div class="cart-collapsable-container">
+                <div class="cart-collapsable-content">
+                    <div class="exit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6" id="exit-button">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </div>
+                    <div class="middle-cart-collapsable-content">
+                        {% if cart %}
+                            <p> There is something in the cart</p>    
+                        {% else %}   
+                            <p>There is nothing in your cart</p>
+                        {% endif %}
+                    </div> 
+                </div> 
+            </div>
         </div>
-    </div>
 
-    <div class="searchContainer">
-        <div class="overlay" id="overlay"></div>
-        <div class="search-collapsable-container">
-            <div class="search-collapsable-content">
-                <div class="exit-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6" id="exit-button2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                    </svg>
-                </div>
-                <div class="middle-search-collapsable-content">
-                    <!--this is where search bar will go-->
-                    <form>
-                        <div class="search-container">
-                            <input type="text" class="search-input" placeholder="What are you looking for?" />
-                            <button class="search-bar-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                                </svg>
-                            </button>
-                        </div>
-                    </form>
-                </div>    
+        <div class="searchContainer">
+            <div class="overlay" id="overlay"></div>
+            <div class="search-collapsable-container">
+                <div class="search-collapsable-content">
+                    <div class="exit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6" id="exit-button2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </div>
+                    <div class="middle-search-collapsable-content">
+                        <!--this is where search bar will go-->
+                        <form>
+                            <div class="search-container">
+                                <input type="text" class="search-input" placeholder="What are you looking for?" />
+                                <button class="search-bar-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
+                    </div> 
+                </div>   
+            </div>
         </div>
-    </div>
 
-    
-
+        
 
 
-    <div class="page-header">
 
-        <div class="header-container">
-            <!--this is the image that is on the far left-->
-            <button class="bakery-pic-button" data-url="{{ url_for('home') }}"><img src="static\images\bakery.png" alt="Pic" class="bakery-pic"></button>
-            <div class="main-products-links-container">
-                <div class="main-products-links">
-                    <div class="shop-bakery-container" data-url="{{ url_for('all_recipes') }}">
-                        <div class="shop-bakery-message">
-                            <div class="header-buttons">
-                                <p>Browse Recipes</p>
+        <div class="page-header">
+
+            <div class="header-container">
+                <!--this is the image that is on the far left-->
+                <button class="bakery-pic-button" data-url="{{ url_for('home') }}"><img src="static\images\bakery.png" alt="Pic" class="bakery-pic"></button>
+                <div class="main-products-links-container">
+                    <div class="main-products-links">
+                        <div class="shop-bakery-container" data-url="{{ url_for('all_recipes') }}">
+                            <div class="shop-bakery-message">
+                                <div class="header-buttons">
+                                    <p>Browse Recipes</p>
+                                </div>
+                                <div class="arrow-icon active", id="down-arrow-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                    </svg>
+                                </div>
+                                <div class="arrow-icon" id="up-arrow-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                                    </svg>
+                                </div>
                             </div>
-                            <div class="arrow-icon active", id="down-arrow-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                                </svg>
-                            </div>
-                            <div class="arrow-icon" id="up-arrow-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
-                                </svg>
+
+                            <div class="shop-bakery-content-container">
+                                <div class="shop-bakery-content" id="shop-bakery-content">
+                                    <p> Breads </p>
+                                    <p> Pastries </p>
+                                    <p> Cupcakes </p>
+                                    <p> Cookies </p>
+                                </div>                          
                             </div>
                         </div>
 
-                        <div class="shop-bakery-content-container">
-                            <div class="shop-bakery-content" id="shop-bakery-content">
-                                <p> Breads </p>
-                                <p> Pastries </p>
-                                <p> Cupcakes </p>
-                                <p> Cookies </p>
-                            </div>                          
+                        <div class="shop-starters-container" data-url="{{ url_for('all_recipes') }}">
+                            <div class="shop-starters-message">
+                                <div class="header-buttons">
+                                    <p>Buy Starters</p>
+                                </div>
+                                <div class="arrow-icon-starter active">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                    </svg>
+                                </div>
+                                <div class="arrow-icon-starter">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="shop-starters-content-container">
+                                <div class="shop-starters-content" id="shop-starters-content">
+                                    <p> Liquid Starter </p>
+                                    <p> Stiff Starter </p>
+                                    <p> Rye Starter </p>
+                                </div>                          
+                            </div>
+                        </div>
+                        <div class="header-buttons">
+                            <p>About Us</p>
+                        </div>
+                        <div class="header-buttons">
+                            <p>Contact</p>
                         </div>
                     </div>
-
-                    <div class="shop-starters-container" data-url="{{ url_for('all_recipes') }}">
-                        <div class="shop-starters-message">
-                            <div class="header-buttons">
-                                <p>Buy Starters</p>
-                            </div>
-                            <div class="arrow-icon-starter active">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                                </svg>
-                            </div>
-                            <div class="arrow-icon-starter">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
-                                </svg>
-                            </div>
-                        </div>
-
-                        <div class="shop-starters-content-container">
-                            <div class="shop-starters-content" id="shop-starters-content">
-                                <p> Liquid Starter </p>
-                                <p> Stiff Starter </p>
-                                <p> Rye Starter </p>
-                            </div>                          
-                        </div>
+                </div>
+                <div class="cart-search">
+                    <div class="search-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                        </svg>
                     </div>
-                    <div class="header-buttons">
-                         <p>About Us</p>
-                    </div>
-                    <div class="header-buttons">
-                        <p>Contact</p>
+                    <div class="cart-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                        </svg>
                     </div>
                 </div>
             </div>
-            <div class="cart-search">
-                <div class="search-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                    </svg>
-                </div>
-                <div class="cart-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-                    </svg>
-                </div>
-            </div>
         </div>
-    </div>
-    
+        
 
-    <div class="content">
-        {% block content %}
-        <!-- Child pages will inject their HTML here -->
-        {% endblock %}
-    </div>
+        <div class="content">
+            {% block content %}
+            <!-- Child pages will inject their HTML here -->
+            {% endblock %}
+        </div>
 
-    <footer> <!-- Common Footer --> </footer>
+        <footer> <!-- Common Footer --> </footer>
+    </div>
 </body>
 
  <script src="static/js/button.js" defer></script>

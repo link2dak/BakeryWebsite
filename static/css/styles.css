@@ -2,6 +2,12 @@ body {
   margin: 0;
   padding: 0;
 }
+.whole-page{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}
 
 .page-header{
     position: sticky;
@@ -10,7 +16,8 @@ body {
     width: 100%;
     box-shadow: 0 3px 35px rgba(45, 1, 71, 0.418);
     flex-direction: column;
-    padding:.4rem;
+    padding-top:.4rem;
+    padding-bottom: .4rem;
 }
 .page-header .main-products-links-container{
     display: flex;
@@ -388,4 +395,19 @@ body {
 .search-bar-icon:focus-visible {
   outline: none;
   box-shadow: none;
+}
+
+/* ====== Main content- home page ===== */
+.content{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(235, 218, 197);
+}
+
+.page-content-container{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    margin: 5%;
 }
