@@ -112,7 +112,12 @@ body {
   cursor: pointer;
   padding-top: 1.8rem 
 }
-
+.arrow-icon-starter svg{
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  padding-top: 1.8rem 
+}
 .exit-icon svg{
     width: 28px;
     height: 28px;
@@ -231,14 +236,25 @@ body {
     display: flex;
     flex-direction: row;
 }
-
+.shop-starters-message{
+    display: flex;
+    flex-direction: row;
+}
 .arrow-icon{
+    display: none;
+}
+.arrow-icon-starter{
     display: none;
 }
 
 .arrow-icon.active{
     display: block;
 }
+.arrow-icon-starter.active{
+    display: block;
+}
+
+
 
 
 .shop-bakery-container{
@@ -246,9 +262,20 @@ body {
     position: relative;
     align-items: center;
 }
+.shop-starters-container{
+    display:block;
+    position: relative;
+    align-items: center;
+}
+
 .shop-bakery-content-container{
     top: 100%;
 }
+.shop-starters-content-container{
+    top: 100%;
+}
+
+
 .shop-bakery-content{
     display: flex;
     align-items: left;
@@ -271,19 +298,64 @@ body {
     transition: 
         transform 0.2s ease;
 }
+.shop-starters-content{
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    position: absolute;
+    width: 20rem;
+    
+    /* makes it have cureved edges*/
+    border-radius: 15px;
+
+    background: white;
+    box-shadow: -4px 0 15px rgba(0,0,0,0.2);
+
+    height:0;
+
+    opacity: 0;
+    transform: translateY(-10px);
+
+    
+    transition: 
+        transform 0.2s ease;
+}
+
+
+
 .shop-bakery-content p{
     padding-left: 2rem;
     font-size: large;
 }
+.shop-starters-content p{
+    padding-left: 2rem;
+    font-size: large;
+}
+
+
 .shop-bakery-content p:hover{
     cursor: pointer;
     text-decoration: underline;
 }
+.shop-starters-content p:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
 .shop-bakery-content.active{
     height: auto;
     opacity: 1;
     transform: translateY(0);
 }
+.shop-starters-content.active{
+    height: auto;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
 
 .search-container {
   display: flex;

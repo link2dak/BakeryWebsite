@@ -75,3 +75,28 @@ shop_bakery_menu.addEventListener("mouseleave", function(){
 shop_bakery_menu.addEventListener("click", function(){
     window.location.href = shop_bakery_menu.dataset.url;
 })
+
+
+const shop_starters_menu = document.querySelector(".shop-starters-container");
+const arrow_icons_starter = document.querySelectorAll(".arrow-icon-starter")
+const shop_starters_content = document.getElementById("shop-starters-content")
+
+shop_starters_menu.addEventListener("mouseenter", function() {
+
+    arrow_icons_starter.forEach(icon => {
+        icon.classList.toggle("active")       
+    });
+    shop_starters_content.classList.add("active");
+
+});
+
+shop_starters_menu.addEventListener("mouseleave", function(){
+    arrow_icons_starter.forEach(icon => {
+        icon.classList.toggle("active")       
+    });
+    shop_starters_content.classList.remove("active");
+});
+
+shop_starters_menu.addEventListener("click", function(){
+    window.location.href = shop_starters_menu.dataset.url;
+})
