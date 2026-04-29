@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link
-    rel="stylesheet"
-    href="static/css/styles.css"
-  >
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
     <meta charset="UTF-8">
     <title>{% block title %}My Site{% endblock %}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -41,11 +39,11 @@
                         </svg>
                     </div>
                     <div class="middle-search-collapsable-content">
-                        <!--this is where search bar will go-->
-                        <form>
+                        <!--form for getting data on search-->
+                        <form action="{{ url_for('search') }}" method="GET">
                             <div class="search-container">
-                                <input type="text" class="search-input" placeholder="What are you looking for?" />
-                                <button class="search-bar-icon">
+                                <input type="text" class="search-input" name="query" placeholder="What are you looking for?" />
+                                <button class="search-bar-icon" type="submit">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                                     </svg>
@@ -65,7 +63,7 @@
 
             <div class="header-container">
                 <!--this is the image that is on the far left-->
-                <button class="bakery-pic-button" data-url="{{ url_for('home') }}"><img src="static\images\bakery.png" alt="Pic" class="bakery-pic"></button>
+                <button class="bakery-pic-button" data-url="{{ url_for('home') }}"><img src="{{ url_for('static', filename='images/bakery.png') }}" alt="Pic" class="bakery-pic"></button>
                 <div class="main-products-links-container">
                     <div class="main-products-links">
                         <div class="shop-bakery-container" data-url="{{ url_for('all_recipes') }}">
@@ -73,13 +71,13 @@
                                 <div class="header-buttons">
                                     <p>Browse Recipes</p>
                                 </div>
-                                <div class="arrow-icon active", id="down-arrow-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <div class="arrow-icon active", id="down-arrow-icon-bakery">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow-icon-down">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                                     </svg>
                                 </div>
-                                <div class="arrow-icon" id="up-arrow-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <div class="arrow-icon" id="up-arrow-icon-bakery">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow-icon-up">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
                                     </svg>
                                 </div>
@@ -100,12 +98,12 @@
                                 <div class="header-buttons">
                                     <p>Buy Starters</p>
                                 </div>
-                                <div class="arrow-icon-starter active">
+                                <div class="arrow-icon-starter active" id="down-arrow-icon-starter">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                                     </svg>
                                 </div>
-                                <div class="arrow-icon-starter">
+                                <div class="arrow-icon-starter" id="up-arrow-icon-starter">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
                                     </svg>
@@ -154,6 +152,5 @@
     </div>
 </body>
 
- <script src="static/js/button.js" defer></script>
-
+ <script src="{{ url_for('static', filename='js/button.js') }}" defer></script>
 </html>

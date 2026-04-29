@@ -3,7 +3,7 @@ from flask_bcrypt import Bcrypt
 from azure.identity import ClientSecretCredential
 from azure.keyvault.secrets import SecretClient
 from datetime import timedelta
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 import os
 import pdb
 
@@ -12,19 +12,31 @@ app = Flask(__name__)
 bcrypt = Bcrypt(app)
 
 
-# load_dotenv()
-# # setting up key from azure
-# kVURL = os.environ.get("KEY_VAULT") 
+load_dotenv()
+# setting up key from azure
+kVURL = os.environ.get("KEY_VAULT") 
 
 
-# credential = ClientSecretCredential(
-#     tenant_id=os.environ["TENANT_ID"],
-#     client_id=os.environ["CLIENT_ID"],
-#     client_secret=os.environ["CLIENT_SECRET"]
-# )
-# client = SecretClient(vault_url=kVURL, credential=credential)
+credential = ClientSecretCredential(
+    tenant_id=os.environ["TENANT_ID"],
+    client_id=os.environ["CLIENT_ID"],
+    client_secret=os.environ["CLIENT_SECRET"]
+)
+client = SecretClient(vault_url=kVURL, credential=credential)
 
-# app.secret_key = client.get_secret(os.environ.get("KEY_NAME")).value # gathered secret key form az keyvault
+app.secret_key = client.get_secret(os.environ.get("KEY_NAME")).value # gathered secret key form az keyvault
+
+recipe_dict = [{"name": "Sourdough", "description": "This is a perfect sourdough recipe for all levels of bakers!", "image": "sourdough.png"}, 
+                {
+    "name": "onion",
+    "description": "It is just an onion",
+    "image": "onion.png"
+},{
+    "name": "chocolate cake",
+    "description": "rich and moist chocolate cake",
+    "image": "cake.png"
+}]
+
 
 # --------------------
 # HOME
@@ -37,7 +49,7 @@ def home():
     if "user" in session:
         user_name = session["user"].get("name")
 
-    return render_template('index.html', cart=cart, userName=user_name)
+    return render_template('index.html', cart=cart, userName=user_name, recipe_dict = recipe_dict)
 
 
 # --------------------
@@ -61,9 +73,9 @@ def recipe_group(group):
 # INDIVIDUAL RECIPE PAGE
 # (IMPORTANT: namespaced to avoid route conflicts)
 # --------------------
-@app.route('/recipe/<recipe>')
-def recipe(recipe):
-    return render_template('recipePage.html', recipe=recipe)
+@app.route('/recipe/<recipeName>')
+def recipe(recipeName):
+    return render_template('recipePage.html', recipeName=recipeName, recipe_dict = recipe_dict)
 
 
 # --------------------
@@ -80,5 +92,32 @@ def about():
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
+
+
+
+# --------------------
+# Seaerch Route
+# --------------------
+@app.route('/search',  methods = ['POST', 'GET'])
+def search():
+    if request.method == 'GET':
+        query= request.args.get("query", "").lower()
+
+        matchedList = [list(recipe_dict)[0], list(recipe_dict)[0], list(recipe_dict)[0], list(recipe_dict)[0]]
+
+        #checks all the recipes in the dict to see if any match
+        for recipe in recipe_dict:
+            if query in recipe["name"]:
+                print("found a match\n")
+                print(recipe["name"])
+                matchedList.append(recipe)
+            else:
+                print("nothing found")
+        
+    return render_template('search.html', matchedList = matchedList)
+
+
+
 if __name__ == '__main__':
     app.run(debug = True)
+

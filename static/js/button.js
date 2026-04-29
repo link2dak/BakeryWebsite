@@ -52,51 +52,43 @@ exit_button2.addEventListener("click", closeSearchPanel);
 
 
 
+function arrowFunc(menu, message, upArrow, downArrow, content){
+    // OPEN only when hovering the message
+    message.addEventListener("mouseenter", function() {
+    upArrow.classList.add("active");
+    downArrow.classList.remove("active");
+    content.classList.add("active");
+});
+
+// CLOSE when leaving the whole container (message + dropdown)
+menu.addEventListener("mouseleave", function(){
+    upArrow.classList.remove("active");
+    downArrow.classList.add("active");
+    content.classList.remove("active");
+});
+
+// Click still works
+menu.addEventListener("click", function(){
+    window.location.href = menu.dataset.url;
+});
+}
+
+
+
 const shop_bakery_menu = document.querySelector(".shop-bakery-container");
-const arrow_icons = document.querySelectorAll(".arrow-icon")
-const shop_bakery_content = document.getElementById("shop-bakery-content")
-
-shop_bakery_menu.addEventListener("mouseenter", function() {
-
-    arrow_icons.forEach(icon => {
-        icon.classList.toggle("active")       
-    });
-    shop_bakery_content.classList.add("active");
-
-});
-
-shop_bakery_menu.addEventListener("mouseleave", function(){
-    arrow_icons.forEach(icon => {
-        icon.classList.toggle("active")       
-    });
-    shop_bakery_content.classList.remove("active");
-});
-
-shop_bakery_menu.addEventListener("click", function(){
-    window.location.href = shop_bakery_menu.dataset.url;
-})
+const shop_bakery_message = document.querySelector(".shop-bakery-message");
+const arrow_icon_down = document.getElementById("down-arrow-icon-bakery");
+const arrow_icon_up = document.getElementById("up-arrow-icon-bakery");
+const shop_bakery_content = document.getElementById("shop-bakery-content");
+arrowFunc(shop_bakery_menu, shop_bakery_message, arrow_icon_up, arrow_icon_down, shop_bakery_content);
 
 
+//fix this next time
 const shop_starters_menu = document.querySelector(".shop-starters-container");
-const arrow_icons_starter = document.querySelectorAll(".arrow-icon-starter")
-const shop_starters_content = document.getElementById("shop-starters-content")
+const shop_starters_message = document.querySelector(".shop-starters-message");
+const arrow_icon_down_starter = document.getElementById("down-arrow-icon-starter");
+const arrow_icon_up_starter = document.getElementById("up-arrow-icon-starter");
+const shop_starter_content = document.getElementById("shop-starters-content");
 
-shop_starters_menu.addEventListener("mouseenter", function() {
+arrowFunc(shop_starters_menu, shop_starters_message, arrow_icon_up_starter, arrow_icon_down_starter, shop_starter_content);
 
-    arrow_icons_starter.forEach(icon => {
-        icon.classList.toggle("active")       
-    });
-    shop_starters_content.classList.add("active");
-
-});
-
-shop_starters_menu.addEventListener("mouseleave", function(){
-    arrow_icons_starter.forEach(icon => {
-        icon.classList.toggle("active")       
-    });
-    shop_starters_content.classList.remove("active");
-});
-
-shop_starters_menu.addEventListener("click", function(){
-    window.location.href = shop_starters_menu.dataset.url;
-})
