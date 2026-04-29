@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+    <div class="page-content recipePage">
+        
+        {% for recipe in recipe_dict %}
+            {% if recipe.name == recipeName %}
+                <div class="recipe-information-container">
+                    <div class="title">
+                        {{recipe.name}}
+                    </div>
+        
+                    <div class="recipe-description">
+                        {{recipe.description}}
+                    </div>
+                    <div class="recipe-photo">
+                        <img src="{{ url_for('static', filename='images/' ~ recipe.image) }}">
+                    </div>
+                    <div class="">
+                </div>
+            {% endif %}
+        {% endfor %}
+
+
+
+    </div>
+{% endblock %}
