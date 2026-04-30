@@ -416,7 +416,6 @@ body {
 .content{
     flex:1;
     background-color: rgb(235, 218, 197);
-    position: relative;
 }
 
 .pop-recipe-container{
@@ -445,24 +444,23 @@ body {
 .pop-card-title p{
     margin:0;
     padding-bottom: 1rem;
-    padding-left:1rem;
 }
 
 .pop-card-content{
     display: flex;
     flex-direction: row;
-    gap: 10%;
+    gap: 3rem;
     font-family: 'Playfair Display', serif;
     font-size: 2rem;
 }
 .individual-card{
-    flex: 1 1 300px; /* each card ~300px wide */
-    max-width: 350px;
+    flex: 1 1 400px; /* each card ~300px wide */
+    max-width: 400px;
 }
 
 .individuale-card-photo{
     width: 100%;
-    aspect-ratio: 1 / 1;   /* 🔥 makes it a perfect square */
+    aspect-ratio: 3 / 2;   /* 🔥 makes it a perfect square */
     overflow: hidden;
 }
 .individuale-card-photo img{
@@ -471,13 +469,27 @@ body {
     object-fit: cover;      /* fills box nicely */
     display: block;         /* removes weird spacing */
 }
-
-.individual-card-name{
-    width: 100%;
+.individual-card-name-container{
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
     background-color: rgb(235, 213, 186);
-    text-align: center;
-    padding-bottom: 10%;
-    padding-top: 10%;
+}
+
+ .individual-card-name{
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    overflow-wrap: break-word;
+    word-break: break-word;
+
+    padding: 1rem;
+    box-sizing: border-box;
+}
+.card-name-category{
+    font-size: 1rem;
+    font-weight: lighter;
+    padding-bottom: 1rem;
 }
 .individual-card-name a {
     text-decoration: none;       /* removes default underline */

@@ -26,15 +26,17 @@ client = SecretClient(vault_url=kVURL, credential=credential)
 
 app.secret_key = client.get_secret(os.environ.get("KEY_NAME")).value # gathered secret key form az keyvault
 
-recipe_dict = [{"name": "sourdough", "description": "This is a perfect sourdough recipe for all levels of bakers!", "image": "sourdough.png"}, 
+recipe_dict = [{"name": "Sourdough Bread", "description": "This is a perfect sourdough recipe for all levels of bakers!", "image": "sourdough.png", "cat": "recipe"}, 
                 {
     "name": "onion",
     "description": "It is just an onion",
-    "image": "onion.png"
+    "image": "onion.png",
+    "cat": "recipe"
 },{
     "name": "chocolate cake",
     "description": "rich and moist chocolate cake",
-    "image": "cake.png"
+    "image": "cake.png",
+    "cat": "recipe"
 }]
 
 
