@@ -3,8 +3,8 @@
 {% block title %}Home Page{% endblock %}
 
 {% block content %}
-    <div class="page-content recipePage">
-        
+    <article class="recipe-page-container">
+
         {% for recipe in recipe_dict %}
             {% if recipe.name == recipeName %}
                 <div class="recipe-information-container">
@@ -25,5 +25,5 @@
 
 
 
-    </div>
+            </article>
 {% endblock %}

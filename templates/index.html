@@ -3,56 +3,52 @@
 {% block title %}Home Page{% endblock %}
 
 {% block content %}
-    <div class="page-content index">
+    <div class="pop-recipe-container center-container">
         <div class="pop-card-container recipe">
-                <div class="pop-card-title recipe">
-                    <p>Popular Recipes</p>
-                </div>
-                <div class="pop-card-content recipe">
-                    {% for recipe in recipe_dict %}
-                        <div class="individual-card recipe">
-                            <div class="individuale-card-photo recipe">
-                                <a href="{{ url_for('recipe', recipeName=recipe.name)}}">
-                                    <img src="{{ url_for('static', filename='images/' ~ recipe.image) }}">
-                                </a>
-                            </div>
-                            <div class="individual-card-name recipe">
-                                <a href="{{ url_for('recipe', recipeName=recipe.name)}}">
-                                    {{ recipe.name }}
-                                </a>
-                            </div>
+            <div class="pop-card-title recipe">
+                <p>Popular Recipes</p>
+            </div>
+            <div class="pop-card-content recipe">
+                {% for recipe in recipe_dict %}
+                    <div class="individual-card recipe">
+                        <div class="individuale-card-photo recipe">
+                            <a href="{{ url_for('recipe', recipeName=recipe.name)}}">
+                                <img src="{{ url_for('static', filename='images/' ~ recipe.image) }}">
+                            </a>
                         </div>
-                    {% endfor %}
-
-                </div>
-            
-            </div>
-            
-
-            <div class="pop-card-container starters">
-                <div class="pop-card-title starters">
-                    <p>Most Bought Starters</p>
-                </div>
-                <div class="pop-card-content starters">
-                    {% for recipe in recipe_dict %}
-                        <div class="individual-card starters">
-                            <div class="individuale-card-photo starters">
-                                <a href="{{ url_for('recipe', recipeName=recipe.name)}}">
-                                    <img src="{{ url_for('static', filename='images/' ~ recipe.image) }}">
-                                </a>
-                            </div>
-                            <div class="individual-card-name starters">
-                                <a href="{{ url_for('recipe', recipeName=recipe.name)}}">
-                                    {{ recipe.name }}
-                                </a>
-                            </div>
+                        <div class="individual-card-name recipe">
+                            <a href="{{ url_for('recipe', recipeName=recipe.name)}}">
+                                {{ recipe.name }}
+                            </a>
                         </div>
-                    {% endfor %}
-
-                </div>
-            
+                    </div>
+                {% endfor %}
             </div>
+        </div>    
+    </div>
+    <div class="pop-starter-container center-container">
+        <div class="pop-card-container recipe">
+            <div class="pop-card-title recipe">
+                <p>Most Bought Starters</p>
             </div>
+            <div class="pop-card-content recipe">
+                {% for recipe in recipe_dict %}
+                    <div class="individual-card recipe">
+                        <div class="individuale-card-photo recipe">
+                            <a href="{{ url_for('recipe', recipeName=recipe.name)}}">
+                                <img src="{{ url_for('static', filename='images/' ~ recipe.image) }}">
+                            </a>
+                        </div>
+                        <div class="individual-card-name recipe">
+                            <a href="{{ url_for('recipe', recipeName=recipe.name)}}">
+                                {{ recipe.name }}
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>    
+    </div>
     
 {% endblock %}
 

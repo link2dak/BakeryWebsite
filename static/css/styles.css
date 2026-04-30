@@ -407,27 +407,31 @@ body {
 }
 
 /* ====== Main content- home page ===== */
+.center-container{
+    margin: 3rem auto;
+    width: 80rem;
+    max-width: 100%;
+}
+
 .content{
     flex:1;
     background-color: rgb(235, 218, 197);
+    position: relative;
 }
 
-.page-content{
-    padding-top: 5%;
-    padding-left: 20%;
-    padding-right: 20%;
-}
-
-.page-content.index{
+.pop-recipe-container{
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    font-family: "SE Inter", "Space Grotesk", helvetica, sans-serif;
+    font-size: 2.5rem;
+    padding-bottom: 2rem;
 }
-.page-content.recipePage{
-    /* display: flex;
-    flex-direction: column; */
-    display: grid;
-    grid-template-columns: minmax(0, 50rem) 18.75rem;
+.pop-starter-container{
+    display: flex;
+    flex-direction: column;
+    font-family: "SE Inter", "Space Grotesk", helvetica, sans-serif;
+    font-size: 2.5rem;
+    padding-bottom: 2rem;
 }
 
 /* ==== pop recipe card ======*/
@@ -435,20 +439,21 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
-    gap:2rem;
 }
 
 
 .pop-card-title p{
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;   /* ~40px */
-    font-weight: 600;
     margin:0;
+    padding-bottom: 1rem;
+    padding-left:1rem;
 }
+
 .pop-card-content{
     display: flex;
     flex-direction: row;
     gap: 10%;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
 }
 .individual-card{
     flex: 1 1 300px; /* each card ~300px wide */
@@ -486,7 +491,14 @@ body {
 
 
 /* ==== individual recipe page ======*/
-.recipe-information-container{
+.recipe-page-container{
+    display: grid;
+    grid-template-columns: minmax(0, 50rem) 18rem;
+    margin:1rem auto;
+    width: 68rem;
+    justify-content: space-evenly;
+}
+.recipe-container{
     display:flex;
     flex-direction: column;
     gap: 2rem;
@@ -509,7 +521,12 @@ body {
 
 
 /* ==== search page ======*/
-.pop-card-container.search{
+.page-content{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.card-container{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;

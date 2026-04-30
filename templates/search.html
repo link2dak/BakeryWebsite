@@ -5,9 +5,9 @@
 {% block content %}
     <div class="page-content search">
         <div class="search-title">
-        <h1>this is test</h1>
+        <h1>Found {{matchedList | length}} results</h1>
     </div>
-        <div class="pop-card-container search">
+        <div class="card-container center-container">
             {% for recipe in matchedList %}
                 <div class="individual-card">
                     <div class="individuale-card-photo recipe">

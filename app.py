@@ -26,7 +26,7 @@ client = SecretClient(vault_url=kVURL, credential=credential)
 
 app.secret_key = client.get_secret(os.environ.get("KEY_NAME")).value # gathered secret key form az keyvault
 
-recipe_dict = [{"name": "Sourdough", "description": "This is a perfect sourdough recipe for all levels of bakers!", "image": "sourdough.png"}, 
+recipe_dict = [{"name": "sourdough", "description": "This is a perfect sourdough recipe for all levels of bakers!", "image": "sourdough.png"}, 
                 {
     "name": "onion",
     "description": "It is just an onion",
@@ -103,7 +103,7 @@ def search():
     if request.method == 'GET':
         query= request.args.get("query", "").lower()
 
-        matchedList = [list(recipe_dict)[0], list(recipe_dict)[0], list(recipe_dict)[0], list(recipe_dict)[0]]
+        matchedList = []
 
         #checks all the recipes in the dict to see if any match
         for recipe in recipe_dict:
