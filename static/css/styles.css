@@ -457,6 +457,9 @@ body {
     flex: 1 1 400px; /* each card ~300px wide */
     max-width: 400px;
 }
+.individual-card :hover{
+    cursor: pointer;
+}
 
 .individuale-card-photo{
     width: 100%;
@@ -491,15 +494,17 @@ body {
     font-weight: lighter;
     padding-bottom: 1rem;
 }
-.individual-card-name a {
+.individual-card-name .card-name-url {
     text-decoration: none;       /* removes default underline */
     color: inherit;              /* keeps your text color */
 }
 
-.individual-card-name a:hover {
+.individual-card-name .card-name-url.active {
     cursor: pointer;
     text-decoration: underline;
 }
+
+
 
 
 /* ==== individual recipe page ======*/
@@ -550,4 +555,3 @@ body {
     gap: 4%;
 
 }
-

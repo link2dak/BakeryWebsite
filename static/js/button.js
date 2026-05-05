@@ -92,3 +92,22 @@ const shop_starter_content = document.getElementById("shop-starters-content");
 
 arrowFunc(shop_starters_menu, shop_starters_message, arrow_icon_up_starter, arrow_icon_down_starter, shop_starter_content);
 
+
+//logic for card hover/click
+const cards = document.querySelectorAll(".individual-card");
+
+cards.forEach(card => {
+    const cardLink = card.querySelector(".card-name-url");
+    
+    card.addEventListener("mouseenter", function() {
+        console.log("this is a test and it is working");
+        cardLink.classList.add("active");
+    });
+    card.addEventListener("mouseleave", function(){
+        cardLink.classList.remove("active");
+    });
+
+    card.addEventListener("click", function(){
+        window.location.href = cardLink.dataset.url;
+    })
+});

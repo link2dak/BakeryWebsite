@@ -12,18 +12,18 @@
                 {% for recipe in recipe_dict %}
                     <div class="individual-card recipe">
                         <div class="individuale-card-photo recipe">
-                            <a href="{{ url_for('recipe', recipeName=recipe.name)}}">
-                                <img src="{{ url_for('static', filename='images/' ~ recipe.image) }}">
+                            <a href="{{ url_for('recipe', recipeID=recipe[0], recipeName=recipe[1]|lower|replace(' ', '-')) }}">
+                                <img src="{{ url_for('static', filename='images/' ~ recipe[5]) }}">
                             </a>
                         </div>
                         <div class="individual-card-name-container">
                             <div class="individual-card-name recipe">
                                 <div class="card-name-category">
-                                    {{ recipe.cat }}
+                                    {{ recipe[6] }}
                                 </div>
                                                             
-                                <a href="{{ url_for('recipe', recipeName=recipe.name)}}">
-                                    {{ recipe.name }}
+                                <a class="card-name-url" data-url="{{ url_for('recipe', recipeID=recipe[0], recipeName=recipe[1]|lower|replace(' ', '-'))}}">
+                                    {{ recipe[1] }}
                                 </a>
                             </div>
                         </div>
@@ -42,17 +42,17 @@
                 {% for recipe in recipe_dict %}
                     <div class="individual-card recipe">
                         <div class="individuale-card-photo recipe">
-                            <a href="{{ url_for('recipe', recipeName=recipe.name)}}">
-                                <img src="{{ url_for('static', filename='images/' ~ recipe.image) }}">
+                            <a href="{{ url_for('recipe', recipeID=recipe[0], recipeName=recipe[1]|lower|replace(' ', '-')) }}">
+                                <img src="{{ url_for('static', filename='images/' ~ recipe[5]) }}">
                             </a>
                         </div>
                         <div class="individual-card-name-container">                        
                             <div class="individual-card-name">
                                 <div class="card-name-category">
-                                    {{ recipe.cat }}
+                                    {{ recipe[6] }}
                                 </div>
-                                <a href="{{ url_for('recipe', recipeName=recipe.name)}}">
-                                    {{ recipe.name }}
+                                <a class="card-name-url" data-url="{{ url_for('recipe', recipeID=recipe[0], recipeName=recipe[1]|lower|replace(' ', '-'))}}">
+                                    {{ recipe[1] }}
                                 </a>
                             </div>
                         </div>

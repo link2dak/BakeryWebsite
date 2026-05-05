@@ -15,10 +15,15 @@
                             <img src="{{ url_for('static', filename='images/' ~ recipe.image) }}">
                         </a>
                     </div>
-                    <div class="individual-card-name">
-                        <a href="{{ url_for('recipe', recipeName=recipe.name)}}">
-                            {{ recipe.name }}
-                        </a>
+                    <div  class="individual-card-name-container">
+                        <div class="individual-card-name">
+                            <div class="card-name-category">
+                                {{recipe.cat}}
+                            </div>
+                            <a class="card-name-url" data-url="{{ url_for('recipe', recipeName=recipe.name)}}">
+                                {{ recipe.name }}
+                            </a>
+                        </div>
                     </div>
                 </div>
             {% endfor %}

@@ -5,6 +5,8 @@ from azure.keyvault.secrets import SecretClient
 from datetime import timedelta
 from dotenv import load_dotenv
 import os
+import sqlite3
+import json
 import pdb
 
 
@@ -26,19 +28,22 @@ client = SecretClient(vault_url=kVURL, credential=credential)
 
 app.secret_key = client.get_secret(os.environ.get("KEY_NAME")).value # gathered secret key form az keyvault
 
-recipe_dict = [{"name": "Sourdough Bread", "description": "This is a perfect sourdough recipe for all levels of bakers!", "image": "sourdough.png", "cat": "recipe"}, 
+recipe_dict = [{"name": "Sourdough Bread", "description": "This is a perfect sourdough recipe for all levels of bakers!", "image": "sourdough.png", "cat": "Recipe"}, 
                 {
     "name": "onion",
     "description": "It is just an onion",
     "image": "onion.png",
-    "cat": "recipe"
+    "cat": "Recipe"
 },{
     "name": "chocolate cake",
     "description": "rich and moist chocolate cake",
     "image": "cake.png",
-    "cat": "recipe"
+    "cat": "Recipe"
 }]
 
+def get_db():
+    g = sqlite3.connect("recipe database.db")
+    return g
 
 # --------------------
 # HOME
@@ -47,11 +52,25 @@ recipe_dict = [{"name": "Sourdough Bread", "description": "This is a perfect sou
 def home():
     cart = None
 
-    user_name = None
-    if "user" in session:
-        user_name = session["user"].get("name")
+    # user_name = None
+    # if "user" in session:
+    #     user_name = session["user"].get("name")
 
-    return render_template('index.html', cart=cart, userName=user_name, recipe_dict = recipe_dict)
+    db = get_db()
+    cursor = db.cursor()
+
+    # finds the first 3 recent recipes created
+    cursor.execute(""" 
+        SELECT *
+            FROM redcipe_table
+            ORDER BY
+                created_at DESC
+            LIMIT 3         
+    """) 
+    rows = cursor.fetchall()
+    print(rows)
+
+    return render_template('index.html', cart=cart, recipe_dict = rows)
 
 
 # --------------------
@@ -75,9 +94,38 @@ def recipe_group(group):
 # INDIVIDUAL RECIPE PAGE
 # (IMPORTANT: namespaced to avoid route conflicts)
 # --------------------
-@app.route('/recipe/<recipeName>')
-def recipe(recipeName):
-    return render_template('recipePage.html', recipeName=recipeName, recipe_dict = recipe_dict)
+@app.route('/recipe/<int:recipeID>/<recipeName>')
+def recipe(recipeID, recipeName):
+    db = get_db()
+    cursor = db.cursor()
+
+    # finds the recipe with the id "recipeID"
+    cursor.execute(""" 
+        SELECT *                   
+            FROM redcipe_table
+            WHERE id = ?
+    """, (recipeID,)
+    ) 
+    recipe = cursor.fetchone()
+    #fix the json format so that it is in the correct structure
+    instructions = json.load(recipe["ingredients"])    
+
+    cursor.execute(""" 
+        SELECT 
+            ingredient_table.name,
+            recipe_ingredient.amount,
+            recipe_ingredient.unit
+                   
+        FROM recipe_ingredient
+        JOIN ingredient_table ON ingredient_table.id = recipe_ingredient.ingredient_id
+        WHERE recipe_id = ?
+""", (recipeID,)
+)
+
+    ingredients = cursor.fetchall()
+    print(ingredients)
+
+    return render_template('recipePage.html', recipeName=recipeName, recipe = recipe, instructions = instructions, ingredients = ingredients)
 
 
 # --------------------
@@ -109,7 +157,7 @@ def search():
 
         #checks all the recipes in the dict to see if any match
         for recipe in recipe_dict:
-            if query in recipe["name"]:
+            if query in recipe["name"].lower():
                 print("found a match\n")
                 print(recipe["name"])
                 matchedList.append(recipe)

@@ -5,23 +5,23 @@
 {% block content %}
     <article class="recipe-page-container">
 
-        {% for recipe in recipe_dict %}
-            {% if recipe.name == recipeName %}
-                <div class="recipe-information-container">
-                    <div class="title">
-                        {{recipe.name}}
-                    </div>
         
-                    <div class="recipe-description">
-                        {{recipe.description}}
-                    </div>
-                    <div class="recipe-photo">
-                        <img src="{{ url_for('static', filename='images/' ~ recipe.image) }}">
-                    </div>
-                    <div class="">
+            <div class="recipe-information-container">
+                <div class="title">
+                    {{recipe[1]}}
                 </div>
-            {% endif %}
-        {% endfor %}
+        
+                <div class="recipe-description">
+                    {{recipe[2]}}
+                </div>
+                <div class="recipe-photo">
+                    <img src="{{ url_for('static', filename='images/' ~ recipe[5]) }}">
+                </div>
+                <div class="instructions">
+                    
+
+                </div>
+            </div>
 
 
 
